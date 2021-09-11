@@ -35,7 +35,6 @@ const getCart = () => {
 const addToCart = (name, price, qty) => {
     const cart = getCart();
     const existProduct = cart.find(p => p.name == name);
-    console.log(existProduct)
     if (existProduct) {
         const product = {
             name,
