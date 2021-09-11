@@ -35,11 +35,13 @@ const getCart = () => {
 const addToCart = (name, price, qty) => {
     const cart = getCart();
     const existProduct = cart.find(p => p.name == name);
+    console.log(existProduct)
     if (existProduct) {
         const product = {
             name,
             price,
-            qty: parseInt(existProduct.qty) + parseInt(qty)
+            qty: parseInt(existProduct.qty) + parseInt(qty),
+            total: price * (parseInt(existProduct.qty) + parseInt(qty))
         }
         const cartStringified = cart.filter(p => p.name != name);
         const newProducts = [...cartStringified, product];
@@ -48,7 +50,8 @@ const addToCart = (name, price, qty) => {
         const product = {
             name,
             price,
-            qty
+            qty,
+            total: price * qty
         }
         const cartStringified = cart;
         const newProducts = [...cartStringified, product];
@@ -67,6 +70,7 @@ const displayLocalstorage = () => {
                     <td>${product.name}</td>
                     <td>${product.price}</td>
                     <td>${product.qty}</td>
+                    <td>${product.total}</td>
                     `;
         tableId.appendChild(tableCreate);
     })
