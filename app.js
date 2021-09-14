@@ -2,8 +2,14 @@
 const productName = document.getElementById('product-name');
 const productPrice = document.getElementById('product-price');
 const ProductQty = document.getElementById('product-qty');
+const btnSearch = document.getElementById('button-addon2');
 const tableId = document.getElementById('show');
-const addItem = () => {
+(productName,productPrice,ProductQty).addEventListener("keypress", function (even) {
+    if (even) {
+        btnSearch.click();
+    }
+});
+const addItem = (keyup) => {
     const productField = productName.value;
     const priceFiled = productPrice.value;
     const qtyField = ProductQty.value;
